@@ -16,17 +16,10 @@ public class FirstLastDigitSum {
         }
 
         int digit = number % 10;
-        int sum = digit;
-
-        for (int i = number; i > 0; i /= 10) {
-            if (i / 10 != 0) {
-                continue;
-            }
-
-            digit = i % 10;
-            sum += digit;
+        while (number > 9) {
+            number /= 10;
         }
 
-        return sum;
+        return number + digit;
     }
 }
