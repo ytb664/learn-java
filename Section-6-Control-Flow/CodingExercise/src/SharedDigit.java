@@ -17,16 +17,11 @@ public class SharedDigit {
             return false;
         }
 
-        int x1 = 0;
-        int y1 = 0;
+        int x1 = x % 10;
+        int y1 = y % 10;
 
-        while (x / 10 != 0) {
-            x1 = x % 10;
-            y1 = y % 10;
-
-            x /= 10;
-            y /= 10;
-        }
+        x /= 10;
+        y /= 10;
 
         return x == y || x == y1 || x1 == y || x1 == y1;
     }
