@@ -11,13 +11,11 @@ public class Main {
         } catch (NullPointerException e) {
             System.out.println(getInputFromScanner(currentYear));
         }
-
-        System.out.println(getInputFromScanner(currentYear));
     }
 
     public static String getInputFromConsole(int currentYear) {
 
-        String name = System.console().readLine("Hi, What's your Name? ");
+        String name = System.console().readLine("HI, What's your name? ");
         System.out.println("Hi " + name + ", Thanks for taking the course!");
 
         String dateOfBirth = System.console().readLine("What year were you born? ");
@@ -30,8 +28,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-//        String name = System.console().readLine("Hi, What's your Name? ");
-        System.out.println("Hi, What's your name? ");
+//        String name = System.console().readLine("HI, What's your name? ");
+        System.out.println("HI, What's your Name? ");
         String name = scanner.nextLine();
 
         System.out.println("Hi " + name + ", Thanks for taking the course!");
