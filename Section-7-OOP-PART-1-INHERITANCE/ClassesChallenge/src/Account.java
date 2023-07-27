@@ -6,6 +6,20 @@ public class Account {
     private String email;
     private String phoneNumber;
 
+    public Account() {
+        System.out.println("Empty constructor called");
+    }
+
+    public Account(String number, double balance, String name, String email,
+                    String phoneNumber) {
+        System.out.println("Account constructor with parameters called");
+        this.number = number;
+        this.balance = balance;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public void deposit(double deposit) {
         balance += deposit;
         System.out.println("Deposit of $" + deposit + " made. New balance is $" +

@@ -2,13 +2,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Account account = new Account();
+        Account account = new Account("12345", 500,
+                "Bob Brown", "myemail@bob.com",
+                "(087) 123 4567");
 
-        account.setNumber("12345");
-        account.setBalance(1000.00);
-        account.setName("Bob Brown");
-        account.setEmail("myemail@bob.com");
-        account.setPhoneNumber("(087) 123-4567");
+        System.out.println(account.getNumber());
+        System.out.println(account.getBalance());
+
+//        account.setNumber("12345");
+//        account.setBalance(1000.00);
+//        account.setName("Bob Brown");
+//        account.setEmail("myemail@bob.com");
+//        account.setPhoneNumber("(087) 123-4567");
 
         account.withdraw(100.0);
         account.deposit(250);
