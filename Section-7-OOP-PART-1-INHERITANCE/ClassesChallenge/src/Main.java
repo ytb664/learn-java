@@ -2,9 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Account account = new Account("12345", 500,
-                "Bob Brown", "myemail@bob.com",
-                "(087) 123 4567");
+//        Account account = new Account("12345", 500,
+//                "Bob Brown", "myemail@bob.com",
+//                "(087) 123 4567");
+
+        Account account = new Account();
 
         System.out.println(account.getNumber());
         System.out.println(account.getBalance());
@@ -27,22 +29,9 @@ public class Main {
 
         account.withdraw(54.45);
 
-//        account.setNumber("1010");
-//        account.setBalance(100);
-//        account.setName("Zim");
-//        account.setEmail("zim@gmail.com");
-//        account.setPhoneNumber("085156348470");
-//
-//        account.deposit(1000);
-//        account.withdraw(626);
-//        System.out.println("Balance: " + account.getBalance());
-//        System.out.println();
-//
-//        System.out.println("Account Number: " + account.getNumber());
-//        System.out.println("Account Owner: " + account.getName());
-//        System.out.println("Account Balance: $" + account.getBalance());
-//        System.out.println("Email: " + account.getEmail());
-//        System.out.println("Phone Number: " + account.getPhoneNumber());
-
+        Account timsAccount = new Account("Tim",
+                "tim@email.com", "12345");
+        System.out.println("AccountNo: " + timsAccount.getNumber() +
+                "; name " + timsAccount.getName());
     }
 }
