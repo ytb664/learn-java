@@ -30,5 +30,4 @@ public class Wall {
     public void setHeight(double height) {
         this.height = height < 0 ? 0 : height;
     }
-
 }
