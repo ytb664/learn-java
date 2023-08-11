@@ -1,29 +1,41 @@
 public class Order {
 
-//    private Item item;
     private Burger burger;
     private Drinks drinks;
     private Side side;
 
     public Order() {
-        burger = new Burger();
-        drinks = new Drinks();
-        side = new Side();
+        this("Fries");
     }
 
-    public void setBurger(String type, int toppings) {
-        burger.setBurger(type, toppings);
+    public Order(String side) {
+        this("Ham", "Coke", side);
     }
 
-    public void setDrinks(String type, String size) {
-        drinks.setDrinks(type, size);
+    public Order(String burger, String drinks) {
+        this(burger, drinks, "Fries");
     }
 
-    public void setSide(String type) {
-        side.setSide(type);
+    public Order(String burgerType, String drinkType, String sideType) {
+        this.burger = new Burger(burgerType);
+        this.drinks = new Drinks(drinkType);
+        this.side = new Side(sideType);
     }
 
-    public double getTotal() {
-        return burger.getPrice() + drinks.getPrice() + side.getPrice();
+    public void newOrder() {
+
+        burger.makeOrder();
+        drinks.makeOrder();
+        side.makeOrder();
+
+        System.out.println("-".repeat(20));
+        double totalPrice = burger.getItemPrice() + drinks.getItemPrice() + side.getItemPrice();
+        System.out.printf("Total Price: %.3f%n%n", totalPrice);
+    }
+
+    public void setExtras(int toppings, String size) {
+
+        burger.setAdditionalPrice(toppings);
+        drinks.setAdditionalPrice(size);
     }
 }
