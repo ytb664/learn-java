@@ -22,8 +22,8 @@ public class Item {
         this.additionalPrice = additionalPrice;
     }
 
-    public void setItemPrice(double itemPrice) {
-        this.itemPrice = itemPrice;
+    public void setItemPrice() {
+        this.itemPrice = initialPrice + additionalPrice;
     }
 
     // Getters Methods
@@ -57,9 +57,10 @@ class Burger extends Item {
         // Assigning the base price for the ordered burger
         setInitialPrice(type);
         // Assigning the additional price for the ordered toppings
-        setAdditionalPrice(toppings * 5.000d);
+        double toppingsPrice = toppings * 5.0003;
+        setAdditionalPrice(toppingsPrice);
         // Assigning the total price for the burger item
-        setItemPrice(initialPrice + getAdditionalPrice());
+        setItemPrice();
     }
 
     // Method to assign the base price of the Burger
@@ -128,7 +129,7 @@ class Drinks extends Item {
         // Setting the base price for the drinks
         setInitialPrice(type);
         // Setting the total drink price based on the base price and the additional price
-        setItemPrice(initialPrice + getAdditionalPrice());
+        setItemPrice();
     }
 
     // Base price for the drinks item
@@ -148,15 +149,17 @@ class Drinks extends Item {
     // Additional price for the drinks item
     public void setAdditionalPrice(String size) {
 
+        this.size = size;
+
         // Getting the drink size based on the first character of the size argument
         char drinkSize = size.toUpperCase().charAt(0);
 
         // Assigning the additional price for drinks based on the drink size
         switch (drinkSize) {
-            case 'S' -> super.setAdditionalPrice(2.000d);
-            case 'M' -> super.setAdditionalPrice(5.000d);
-            case 'L' -> super.setAdditionalPrice(10.000d);
-            default -> super.setAdditionalPrice(0.0d);
+            case 'S' -> setAdditionalPrice(2.000d);
+            case 'M' -> setAdditionalPrice(5.000d);
+            case 'L' -> setAdditionalPrice(10.000d);
+            default -> setAdditionalPrice(0.0d);
         }
     }
 

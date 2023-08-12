@@ -42,7 +42,13 @@ public class Order {
     // Method to assign the toppings for burger and the size for the drinks
     public void setExtras(int toppings, String size) {
 
-        burger.setAdditionalPrice(toppings);
+        burger.setToppings(toppings);
+        burger.setAdditionalPrice();
+
         drinks.setAdditionalPrice(size);
+
+        // Assigning the item price for ordered burger and drinks based on the base price + additional price
+        burger.setItemPrice();
+        drinks.setItemPrice();
     }
 }
