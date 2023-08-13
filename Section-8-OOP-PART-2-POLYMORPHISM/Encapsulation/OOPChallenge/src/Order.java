@@ -30,13 +30,34 @@ public class Order {
     // Method to print out the order and the total price of the order
     public void newOrder() {
 
+        double totalPrice = burger.getItemPrice() + drinks.getItemPrice() + side.getItemPrice();
+
+        if (burger.getBurgerType() == 'D') {
+            burger.initialPrice = totalPrice;
+            burger.setItemPrice(totalPrice);
+            drinks.setItemPrice(0.0d);
+            side.setItemPrice(0.0d);
+        }
+
         burger.makeOrder();
         drinks.makeOrder();
         side.makeOrder();
 
         System.out.println("-".repeat(20));
-        double totalPrice = burger.getItemPrice() + drinks.getItemPrice() + side.getItemPrice();
+
         System.out.printf("Total Price: %.3f%n%n", totalPrice);
+    }
+
+    public void setExtras(int toppings) {
+
+        burger.setToppings(toppings);
+        burger.setAdditionalPrice();
+
+        drinks.setAdditionalPrice("Small");
+
+        // Assigning the item price for ordered burger and drinks based on the base price + additional price
+        burger.setItemPrice();
+        drinks.setItemPrice();
     }
 
     // Method to assign the toppings for burger and the size for the drinks

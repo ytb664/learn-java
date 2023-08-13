@@ -26,6 +26,10 @@ public class Item {
         this.itemPrice = initialPrice + additionalPrice;
     }
 
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
     // Getters Methods
     public String getType() {
         return type;
@@ -57,7 +61,7 @@ class Burger extends Item {
         // Assigning the base price for the ordered burger
         setInitialPrice(type);
         // Assigning the additional price for the ordered toppings
-        double toppingsPrice = toppings * 5.0003;
+        double toppingsPrice = toppings * 5.000d;
         setAdditionalPrice(toppingsPrice);
         // Assigning the total price for the burger item
         setItemPrice();
@@ -71,9 +75,10 @@ class Burger extends Item {
 
         // Assigning the base price for burger based on the burger type
         switch (burgerType) {
-            case 'H' -> initialPrice += 45.000d;
-            case 'B' -> initialPrice += 40.000d;
-            default -> initialPrice += 0.0d;
+            case 'H' -> initialPrice = 45.000d;
+            case 'B' -> initialPrice = 40.000d;
+            case 'D' -> initialPrice = 50.000d;
+            default -> initialPrice = 0.0d;
         }
     }
 
@@ -88,12 +93,23 @@ class Burger extends Item {
                 "Item Price: Rp%.3f%n", super.getType(), initialPrice, toppings, super.getItemPrice());
     }
 
+    @Override
+    public void setItemPrice(double itemPrice) {
+        super.setItemPrice(itemPrice);
+    }
+
     // Method to assign the additional price for Burger
     public void setAdditionalPrice() {
 
+        double additionalPrice;
+
         // Setting the additional price based on the toppings added, Rp5.000 per topping
-        double additionalPrice = toppings * 5.000d;
-        super.setAdditionalPrice(additionalPrice);
+        if (getBurgerType() != 'D') {
+            additionalPrice = toppings * 5.000d;
+            initialPrice += additionalPrice;
+        } else {
+            initialPrice += 3 * 5.000d;
+        }
     }
 
     // Method to assign the toppings of Burger
@@ -103,18 +119,27 @@ class Burger extends Item {
         if (toppings < 0) {
             System.out.println("Toppings can't be negative.");
             this.toppings = 0;
-        } else if (toppings > 3) {
+        } else if (toppings > 5 && getBurgerType() == 'D') {
+            System.out.println("Deluxe Burger can only have maximum of 5 toppings.");
+            this.toppings = 5;
+        } else if (toppings > 3 && getBurgerType() != 'D') {
             System.out.println("You can only have maximum of 3 toppings.");
             this.toppings = 3;
         } else {
             this.toppings = toppings;
         }
     }
+
+    public char getBurgerType() {
+
+        String type = super.getType();
+        return type.toUpperCase().charAt(0);
+    }
 }
 
 class Drinks extends Item {
     // Drinks unique field
-    private String size;
+    private String size = "Small";
 
     // No args constructor will set the default type of drinks to "Coke"
     public Drinks() {
@@ -171,6 +196,11 @@ class Drinks extends Item {
                 "Size: %s%n" +
                 "Item Price: Rp%.3f%n", super.getType(), size, super.getItemPrice());
     }
+
+    @Override
+    public void setItemPrice(double itemPrice) {
+        super.setItemPrice(itemPrice);
+    }
 }
 
 
@@ -188,6 +218,7 @@ class Side extends Item {
 
         // Setting the base price for Side based on the ordered Side
         setInitialPrice(type);
+        setItemPrice();
     }
 
     // Base price for the side item
@@ -210,6 +241,11 @@ class Side extends Item {
 
         System.out.printf("3. Side%n" +
                 "%s%n" +
-                "Item Price: Rp%.3f%n", super.getType(), initialPrice);
+                "Item Price: Rp%.3f%n", super.getType(), getItemPrice());
+    }
+
+    @Override
+    public void setItemPrice(double itemPrice) {
+        super.setItemPrice(itemPrice);
     }
 }

@@ -2,26 +2,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        Order firstOrder = new Order();
-//        firstOrder.newOrder();
-//
-//        Order secondOrder = new Order("Ring");
-//        secondOrder.newOrder();
-//
-//        Order thirdOrder = new Order("Beef", "Tea");
-//        thirdOrder.newOrder();
+        Order firstOrder = new Order();
+        firstOrder.newOrder();
 
-        Order fullOrder = new Order("Beef", "Coke");
-        fullOrder.setExtras(3, "Large");
+        Order secondOrder = new Order("Beef", "Coke", "Ring");
+        secondOrder.setExtras(3);
+        secondOrder.newOrder();
+
+        Order fullOrder = new Order("Deluxe", "Coke", "Fries");
+        fullOrder.setExtras(5, "Large");
         fullOrder.newOrder();
-
-        Burger burger = new Burger();
-        burger.setToppings(3);
-        burger.setAdditionalPrice();
-        System.out.println(burger.getAdditionalPrice());
-
-        Drinks drinks = new Drinks();
-        drinks.setAdditionalPrice("Medium");
-        System.out.println(drinks.getAdditionalPrice());
     }
 }
